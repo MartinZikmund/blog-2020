@@ -9,6 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button Click="PinToTaskBar_Click">Pin me!</Button>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Click="PinToTaskBar_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Pin" />
+                    <TextBlock Text="Pin me!" Margin="8,0,0,0" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
     </Grid>
 </Page>
