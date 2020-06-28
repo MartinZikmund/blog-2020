@@ -23,17 +23,21 @@ namespace UWP.CalendarHighlight
             UpdateCalendar();
         }
 
-        private void UpdateCalendar()
+private void UpdateCalendar()
+{
+    var displayedDays = Calendar.FindDescendants<CalendarViewDayItem>();
+    foreach (var displayedDay in displayedDays)
+    {
+        if (_highlightedDates.Contains(displayedDay.Date.Date))
         {
-            var displayedDays = Calendar.FindDescendants<CalendarViewDayItem>();
-            foreach (var displayedDay in displayedDays)
-            {
-                if (_highlightedDates.Contains(displayedDay.Date.Date))
-                {
-                    HighlightDay(displayedDay);
-                }
-            }
+            HighlightDay(displayedDay);
         }
+        else
+        {
+            UnHighlightDay(displayedDay);
+        }
+    }
+}
 
         private void Calendar_CalendarViewDayItemChanging(CalendarView sender, CalendarViewDayItemChangingEventArgs args)
         {
@@ -41,12 +45,20 @@ namespace UWP.CalendarHighlight
             {
                 HighlightDay(args.Item);
             }
+            else
+            {
+                UnHighlightDay(args.Item);
+            }
         }
 
         private static void HighlightDay(CalendarViewDayItem displayedDay)
         {
-            //highlight
             displayedDay.Background = new SolidColorBrush(Colors.Red);
+        }
+
+        private static void UnHighlightDay(CalendarViewDayItem displayedDay)
+        {
+            displayedDay.Background = new SolidColorBrush(Colors.Transparent);
         }
     }
 }
