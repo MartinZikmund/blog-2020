@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="UWP.CalendarHighlight.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP.CalendarHighlight"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Padding="20" Spacing="20">
+        <DatePicker x:Name="Picker" />
+        <Button Click="Add_Click">Add</Button>
+        <CalendarView CalendarViewDayItemChanging="Calendar_CalendarViewDayItemChanging" x:Name="Calendar" />
+    </StackPanel>
+</Page>
