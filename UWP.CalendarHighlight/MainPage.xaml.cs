@@ -23,21 +23,21 @@ namespace UWP.CalendarHighlight
             UpdateCalendar();
         }
 
-private void UpdateCalendar()
-{
-    var displayedDays = Calendar.FindDescendants<CalendarViewDayItem>();
-    foreach (var displayedDay in displayedDays)
-    {
-        if (_highlightedDates.Contains(displayedDay.Date.Date))
+        private void UpdateCalendar()
         {
-            HighlightDay(displayedDay);
+            var displayedDays = Calendar.FindDescendants<CalendarViewDayItem>();
+            foreach (var displayedDay in displayedDays)
+            {
+                if (_highlightedDates.Contains(displayedDay.Date.Date))
+                {
+                    HighlightDay(displayedDay);
+                }
+                else
+                {
+                    UnHighlightDay(displayedDay);
+                }
+            }
         }
-        else
-        {
-            UnHighlightDay(displayedDay);
-        }
-    }
-}
 
         private void Calendar_CalendarViewDayItemChanging(CalendarView sender, CalendarViewDayItemChangingEventArgs args)
         {
