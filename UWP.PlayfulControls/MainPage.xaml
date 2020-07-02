@@ -30,16 +30,17 @@
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="CommonStates">
                                     <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <DoubleAnimation To="-12" Duration="0:0:0.1" Storyboard.TargetName="Translation" Storyboard.TargetProperty="Y" />
+                                        </Storyboard>
                                         <!--<Storyboard>
                                             <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
                                         </Storyboard>-->
                                     </VisualState>
                                     <VisualState x:Name="PointerOver">
                                         <Storyboard>
-                                            <DoubleAnimation To="-18" Duration="0:0:0.1" Storyboard.TargetName="Translation" Storyboard.TargetProperty="Y" />
-
-
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                            <DoubleAnimation To="-14" Duration="0:0:0.1" Storyboard.TargetName="Translation" Storyboard.TargetProperty="Y" />
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
                                             </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
@@ -47,20 +48,30 @@
                                             </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}"/>
-                                            </ObjectAnimationUsingKeyFrames>
+                                            </ObjectAnimationUsingKeyFrames>-->
                                         </Storyboard>
                                     </VisualState>
                                     <VisualState x:Name="Pressed">
                                         <Storyboard>
                                             <DoubleAnimation To="0" Duration="0:0:0.1" Storyboard.TargetName="Translation" Storyboard.TargetProperty="Y" />
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                            <ColorAnimation To="#34495E" Duration="0:0:0.1" Storyboard.TargetName="BackPlateBackground" Storyboard.TargetProperty="Color" />
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPressed}"/>
-                                            </ObjectAnimationUsingKeyFrames>
+                                                </ObjectAnimationUsingKeyFrames> -->
                                         </Storyboard>
                                     </VisualState>
                                     <VisualState x:Name="Disabled">
                                         <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPlate" Storyboard.TargetProperty="Opacity">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0.5" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TopPlate" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Gray" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Translation" Storyboard.TargetProperty="Y">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="-4" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}"/>
                                             </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
@@ -68,28 +79,31 @@
                                             </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}"/>
-                                            </ObjectAnimationUsingKeyFrames>
+                                            </ObjectAnimationUsingKeyFrames>-->
                                         </Storyboard>
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
                             <Border x:Name="BackPlate"
                                 CornerRadius="{TemplateBinding CornerRadius}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                Background="#A2B3CB"
+                                BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="2"
                                 HorizontalAlignment="Stretch" 
-                                VerticalAlignment="Stretch" />
+                                VerticalAlignment="Stretch">
+                                <Border.Background>
+                                    <SolidColorBrush Color="#A2B3CB" x:Name="BackPlateBackground" />
+                                </Border.Background>
+                            </Border>
                             <Border x:Name="TopPlate"
                                     CornerRadius="{TemplateBinding CornerRadius}" 
                                     BorderBrush="{TemplateBinding BorderBrush}" 
                                     BorderThickness="2"
                                     Background="#EDF7F5">
                                 <Border.RenderTransform>
-                                    <TranslateTransform x:Name="Translation" Y="-16" />
+                                    <TranslateTransform x:Name="Translation" Y="-12" />
                                 </Border.RenderTransform>
-                                <Grid>
-                                    <Rectangle Fill="#E1E0D8" Margin="8" MinHeight="64" RadiusX="6" RadiusY="6" StrokeThickness="2" Stroke="{TemplateBinding BorderBrush}" StrokeDashArray="30 1" />
+                                <Grid x:Name="ContentPlate">
+                                    <Rectangle Fill="#E1E0D8" Margin="8" MinHeight="64" RadiusX="6" RadiusY="6" StrokeThickness="1" Stroke="{TemplateBinding BorderBrush}" StrokeDashArray="30 1" />
                                     <ContentPresenter x:Name="ContentPresenter" 
                                                       Margin="8"
                                                       AutomationProperties.AccessibilityView="Raw" 
@@ -114,6 +128,7 @@
     <Grid>
         <Button Style="{StaticResource PlayfulButtonStyle}" 
                 HorizontalAlignment="Center" 
+                IsEnabled="False"
                 VerticalAlignment="Center">I'm a button!</Button>
     </Grid>
 </Page>
