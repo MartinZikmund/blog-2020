@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="f72a51fe-d6d0-46a0-9fc7-0782778d47c5"
+    Name="0003420f-ed81-4928-88e8-4b7931b2990b"
     Publisher="CN=marti"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="153eda22-1179-4996-b304-7e686d0355fb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="f3b19731-1fc0-40f5-9db2-2969db25f695" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Uno.PlayfulButton</DisplayName>
